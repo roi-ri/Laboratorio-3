@@ -13,9 +13,15 @@ int factorial(int n) {
 }
 
 
-int main(int argc, char *argv[]) {
-    int fac4 = factorial(4);
-    int fac5 = factorial(5);
-    printf("4! = %d, 5! = %d\n", fac4, fac5);
+
+
+int main() {
+  int num;
+  printf("Ingrese el numero que desea calcular el factorial: ");
+  scanf("%d", &num);
+
+  int fac = factorial1(num);
+  printf("%d! = %d\n",num,fac);
+
     return 0;
 }
