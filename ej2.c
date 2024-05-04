@@ -20,7 +20,7 @@ int main() {
   printf("Ingrese el numero que desea calcular el factorial: ");
   scanf("%d", &num);
 
-  int fac = factorial1(num);
+  int fac = factorial(num);
   printf("%d! = %d\n",num,fac);
 
     return 0;
