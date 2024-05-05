@@ -8,7 +8,7 @@ int triangleNumber(int n) {
 int main() {
     int n;
     printf("Los primeros 100 numeros triangulares son:\n");
-    for (n = 1; n <= 100; n++) {
+    for (n = 0; n <= 100; n++) {
         printf("%d\n", triangleNumber(n));
     }
     return 0;
