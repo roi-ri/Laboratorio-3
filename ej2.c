@@ -17,9 +17,19 @@ int factorial(int n) {
 
 int main() {
   int num;
+  // Pedir al usuario el numero
   printf("Ingrese el numero que desea calcular el factorial: ");
   scanf("%d", &num);
 
+  // Verificar si la entrada es un numero entero positivo
+  if (num < 0){
+    printf("Error: El dato que ingreso no permite calcular su factorial, favor ingrese un numero valido.\n");
+    return 1;
+
+  }
+
+
+ // Calcular el factorial y mostrar su resultado
   int fac = factorial(num);
   printf("%d! = %d\n",num,fac);
 
