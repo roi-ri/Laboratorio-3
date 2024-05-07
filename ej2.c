@@ -31,7 +31,12 @@ int main() {
 
  // Calcular el factorial y mostrar su resultado
   int fac = factorial(num);
-  printf("%d! = %d\n",num,fac);
+  if (fac == 0);
+     printf("EL numero es muy grande para calcularlo");
+     return 0;
+  if (fac > 0);
+     printf("%d! = %d\n",num,fac);
 
     return 0;
 }
+
