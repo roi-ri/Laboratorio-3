@@ -30,8 +30,7 @@ int main() {
 
  // Calcular el factorial y mostrar su resultado
   int fac = factorial(num);
-     if (fac > 0);
-         printf("%d! = %d\n",num,fac);
+  printf("%d! = %d\n",num,fac);
 
     return 0;
 }
