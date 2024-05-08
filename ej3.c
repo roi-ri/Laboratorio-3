@@ -3,21 +3,31 @@
 
 #define MAX_SIZE 10
 
+int min(int a, int b, int c) {
+    int min = a;
+    if (b < min) min = b;
+    if (c < min) min = c;
+    return min;
+}
+
 int findLargestSquare(int matrix[][MAX_SIZE], int size) {
     int maxSquareSize = 0;
+    int dp[MAX_SIZE][MAX_SIZE] = {0}; // Matriz de programación dinámica para almacenar los tamaños de los cuadrados
 
-    // Recorremos la matriz para encontrar el tamaño del cuadrado más grande
-    for (int i = 0; i < size - maxSquareSize; i++) {
-        for (int j = 0; j < size - maxSquareSize; j++) {
-            int currentSquareSize = 0;
-            while (i + currentSquareSize < size &&
-                   j + currentSquareSize < size &&
-                   matrix[i + currentSquareSize][j] &&
-                   matrix[i][j + currentSquareSize]) {
-                currentSquareSize++;
-            }
-            if (currentSquareSize > maxSquareSize) {
-                maxSquareSize = currentSquareSize;
+    // Rellenar la primera fila y la primera columna de la matriz dp
+    for (int i = 0; i < size; i++) {
+        dp[i][0] = matrix[i][0];
+        dp[0][i] = matrix[0][i];
+        if (matrix[i][0] == 1) maxSquareSize = 1;
+        if (matrix[0][i] == 1) maxSquareSize = 1;
+    }
+
+    // Calcular el tamaño de los cuadrados en las posiciones restantes
+    for (int i = 1; i < size; i++) {
+        for (int j = 1; j < size; j++) {
+            if (matrix[i][j] == 1) {
+                dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1;
+                if (dp[i][j] > maxSquareSize) maxSquareSize = dp[i][j];
             }
         }
     }
@@ -54,7 +64,7 @@ int main() {
     }
 
     int largestSquareSize = findLargestSquare(matrix, size);
-    printf("El tamaño del cuadrado más grande de unos es: %dx%d\n", largestSquareSize,  largestSquareSize);
+    printf("El tamaño del cuadrado más grande de unos es: %dx%d\n", largestSquareSize, largestSquareSize);
 
     return 0;
 }
